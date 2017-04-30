@@ -1,0 +1,51 @@
+<h1>
+  All Movies
+</h1>
+
+<p>
+  <a href="/movies/new_form" class="btn btn-primary">
+    Add a New Movie
+  </a>
+</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Duration</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+
+  <tr>
+    <% @movies.each do |movie| %>
+    <td><img src="<%= movie.image_url %>" width="80"></td>
+    <td><%= movie.title %></td>
+    <td><%= movie.year %></td>
+    <td><%= movie.duration %></td>
+    <td><%= truncate(movie.description) %></td>
+    <td>
+      <a href="/movies/<%= movie.id %>" class="btn btn-primary">
+        <i class="fa fa-search-plus" aria-hidden="true"></i>
+      </a>
+    </td>
+    <td>
+      <a href="/movies/<%= movie.id %>/edit_form" class="btn btn-warning">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </a>
+    </td>
+    <td>
+      <a href="/delete_movie/<%= movie.id %>" class="btn btn-danger">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </a>
+    </td>
+  </tr>
+
+  <% end %>
+</table>
